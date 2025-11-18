@@ -14,7 +14,7 @@ const productData = {
     },
 
     'elite-Papel Higienico Elite Rollo SH Classic': {
-        image: "img/Papel higienico Elite Rollo SH Classic.png",
+        image: "img/Papel Higienico Elite Rollo SH Classic.png",
         detailImage: "imgdetalles/ph elite rollo sh classic.png",
         brand: "Elite",
         category: "Papel Higienico Alto Metraje",
