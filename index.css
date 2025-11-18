@@ -140,7 +140,6 @@ body {
     display: flex;
     align-items: center;
     min-height: 70vh;
-    animation: slideInLeft 1s ease-out;
 
     /* Imagen de fondo */
     background-image: url('imgCleanPel/BAÑOS\ CP\ HERO\ 2.jpg'); 
@@ -277,10 +276,10 @@ body {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.55);
-    border-radius: 12px;
+    width: 97%;
+    padding: 9px;
+    background: rgba(43, 43, 43, 0.3);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -290,8 +289,8 @@ body {
 .video-controls button {
     background: none;
     border: none;
-    color: white;
-    font-size: 18px;
+    color: rgb(255, 255, 255);
+    font-size: 5px;
     cursor: pointer;
 }
 
@@ -309,6 +308,9 @@ body {
     font-size: 14px;
 }
 
+.video-controls button i {
+    font-size: 12px; 
+}
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -1113,7 +1115,7 @@ h1, h2, h3, p, a {
   }
 
   .floating-video {
-    width: 120%;
+    width: 100%;
     border-radius: 15px;
     border-width: 2px;
   }

@@ -2328,3 +2328,91 @@ function moveChatbot() {
 
 window.addEventListener('resize', moveChatbot);
 moveChatbot();
+
+// CONTROLES PERSONALIZADOS DEL VIDEO HERO
+document.addEventListener("DOMContentLoaded", () => {
+
+    const video = document.querySelector(".hero-video");
+    const playBtn = document.querySelector(".play-btn");
+    const muteBtn = document.querySelector(".mute-btn");
+    const fullscreenBtn = document.querySelector(".fullscreen-btn");
+    const progressBar = document.querySelector(".progress-bar");
+    const timeLabel = document.querySelector(".time");
+
+        // PLAY / PAUSE
+    function togglePlay() {
+        const icon = playBtn.querySelector("i");
+
+        if (video.paused) {
+            video.play();
+            icon.classList.remove("fa-play");
+            icon.classList.add("fa-pause");
+        } else {
+            video.pause();
+            icon.classList.remove("fa-pause");
+            icon.classList.add("fa-play");
+        }
+    }
+
+    // Botón de play
+    if (playBtn) {
+        playBtn.addEventListener("click", togglePlay);
+    }
+
+    // Tocar cualquier parte del video
+    video.addEventListener("click", togglePlay);
+
+
+        // MUTE / UNMUTE
+    if (muteBtn) {
+        muteBtn.addEventListener("click", () => {
+            const icon = muteBtn.querySelector("i");
+
+            video.muted = !video.muted;
+
+            if (video.muted) {
+                icon.classList.remove("fa-volume-high");
+                icon.classList.add("fa-volume-xmark");
+            } else {
+                icon.classList.remove("fa-volume-xmark");
+                icon.classList.add("fa-volume-high");
+            }
+        });
+    }
+    
+    // ACTUALIZAR BARRA DE PROGRESO
+    video.addEventListener("timeupdate", () => {
+        if (video.duration) {
+            progressBar.value = (video.currentTime / video.duration) * 100;
+
+            const current = Math.floor(video.currentTime);
+            const total = Math.floor(video.duration);
+
+            const format = (sec) => {
+                const m = Math.floor(sec / 60);
+                const s = Math.floor(sec % 60).toString().padStart(2, "0");
+                return `${m}:${s}`;
+            };
+
+            timeLabel.textContent = `${format(current)} / ${format(total)}`;
+        }
+    });
+
+    // CAMBIAR PROGRESO AL ARRASTRAR
+    progressBar.addEventListener("input", () => {
+        if (video.duration) {
+            video.currentTime = (progressBar.value / 100) * video.duration;
+        }
+    });
+
+    // PANTALLA COMPLETA
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener("click", () => {
+            if (!document.fullscreenElement) {
+                video.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+    }
+});
